@@ -1,0 +1,21 @@
+.headerMain{
+    top: 0;
+    margin-top: 5%;
+    /* min-height: 100vh; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    gap: 100vh;
+}
+
+button{
+    background-color: #9f38db;
+    color: white;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}

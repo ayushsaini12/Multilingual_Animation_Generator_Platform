@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import { Card } from './components/card/Card';
+// import HighlightsCard from './components/card/Card';
+import { Header } from './components/Header/Header';
+import { Hero } from './components/Hero/Hero';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+    <div className="main">
+      <Header/>
+      <Hero />
+
+      <div className='extraText'>
+        <p>Storytelling is the most powerful way</p>
+        <p> to put ideas into the world today.</p>
+      </div>
+
+      <div className='extraText'> Highlights</div>
+
+      <div className='highlightsCard'>
+        {/* <HighlightsCard title = {"MultiLingual Support"} description = {"Multiple language support like Hindi, English and Punjabi. In audio as well as Story input"}/> */}
+        <Card  title = {"MultiLingual Support"} description = {"Multiple language support like Hindi, English and Punjabi. In audio as well as Story input"}/>
+        <Card  title = {"MultiLingual Support"} description = {"Multiple language support like Hindi, English and Punjabi. In audio as well as Story input"}/>
+        <Card  title = {"MultiLingual Support"} description = {"Multiple language support like Hindi, English and Punjabi. In audio as well as Story input"} />
+      </div>
+    </div>
     </div>
   );
 }
