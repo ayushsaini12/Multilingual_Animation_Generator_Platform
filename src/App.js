@@ -1,6 +1,6 @@
 import './App.css';
 import { Card } from './components/card/Card';
-// import HighlightsCard from './components/card/Card';
+import { Generate } from './components/generate/Generate';
 import { Header } from './components/Header/Header';
 import { Hero } from './components/Hero/Hero';
 
@@ -10,7 +10,7 @@ function App() {
     <div className="main">
       <Header/>
       <Hero />
-
+      <div className='cardbox'>
       <div className='extraText'>
         <p>Storytelling is the most powerful way</p>
         <p> to put ideas into the world today.</p>
@@ -18,12 +18,26 @@ function App() {
 
       <div className='extraText'> Highlights</div>
 
-      <div className='highlightsCard'>
-        {/* <HighlightsCard title = {"MultiLingual Support"} description = {"Multiple language support like Hindi, English and Punjabi. In audio as well as Story input"}/> */}
-        <Card  title = {"MultiLingual Support"} description = {"Multiple language support like Hindi, English and Punjabi. In audio as well as Story input"}/>
-        <Card  title = {"MultiLingual Support"} description = {"Multiple language support like Hindi, English and Punjabi. In audio as well as Story input"}/>
-        <Card  title = {"MultiLingual Support"} description = {"Multiple language support like Hindi, English and Punjabi. In audio as well as Story input"} />
       </div>
+
+      <div className='highlightsCard'>
+      <Card  title = {"Story Time!    "} description = {"Share your ideas in any language (Hindi, English, Punjabi)"}/>
+        <Card  title = {"Make it Yours!    "} description = {"Choose video style, Pick your soundtrack, Select your narrator"}/>
+        <Card  title = {"Video Magic!    "} description = {"Prob Sol turns your story into a cool video"} />
+      </div>
+
+      <div className='cardbox'>
+      <div className='extraText'> 
+      <p>Think bigger. With an infinitely</p>
+      <p>creative partner by your side.</p>
+      </div>
+
+      </div>
+
+      
+
+      <Generate />
+
     </div>
     </div>
   );
