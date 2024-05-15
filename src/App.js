@@ -5,8 +5,26 @@ import { Generate } from './components/generate/Generate';
 import { Header } from './components/Header/Header';
 import { Hero } from './components/Hero/Hero';
 // import { Video } from './components/video/video';
+import axios from 'axios';
 
 function App() {
+
+  async function generateVideo(story, gender, language, height, width) {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+    const body = JSON.stringify({story, gender, language, height, width });
+    try {
+      const result = await axios.post("url",body,config )
+      return result;
+    } catch (error) {
+      return error;
+    }
+  
+  }
+
   return (
     <div className='container'>
       <div className="main">
