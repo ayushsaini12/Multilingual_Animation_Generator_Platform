@@ -1,11 +1,11 @@
-import "./hero.css"
+import "./hero.css";
+
 export function Hero() {
-    return (
-        <div className="hero">
-            <h1>Multilingual Story Generator</h1>
-            <p>The Al Video Generator streamlines the video creation process,</p>
-            <p>allowing you to create high-quality content in a fraction of the time</p>
-            <button className="buttonMargin">Get Started</button>
-        </div>
-    )
+  return (
+    <div className="hero">
+      <h1 className="gradient-text">Beyond Text: Turn Your Ideas into Captivating Video</h1>
+      <p>The Future of Storytelling is Here: Generate Your Video</p>
+      <button className="hero-button">Get Started</button>
+    </div>
+  );
 }

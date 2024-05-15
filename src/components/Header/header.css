@@ -12,10 +12,12 @@
 }
 
 button{
-    background-color: #9f38db;
-    color: white;
-    border: none;
-    padding: 10px 10px;
-    border-radius: 5px;
+    font-family: "Inter", sans-serif;
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: bold;
     cursor: pointer;
 }
