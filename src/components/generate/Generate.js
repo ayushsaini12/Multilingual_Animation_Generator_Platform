@@ -15,7 +15,7 @@ export function Generate() {
 
   return (
     <div className='outer'>
-      <UisStar size="20" color="#bd73e8" />
+      <p className='headingGenerate'><UisStar size="20" color="#bd73e8" /></p>
       <p className='headingGenerate'>Drop your ideas here, we'll weave them into a video masterpiece</p>
       <div className="textarea-container">
         <textarea
@@ -27,7 +27,7 @@ export function Generate() {
           value={textareaValue}
           onChange={handleTextareaChange}
         ></textarea>
-        <div className="word-count">{textareaValue.trim().split(/\s+/).length}/300 words</div>
+        <div className="word-count">{textareaValue.trim().split(/\s+/).length}/250 words</div>
       </div>
 
       {/* Dropdown buttons */}
@@ -51,12 +51,13 @@ export function Generate() {
 
       <hr />
 
-      {/* Solid button */}
       <div className="button-container">
         <button className="generate-button">
           Generate
         </button>
       </div>
+
     </div>
+    
   );
 }   

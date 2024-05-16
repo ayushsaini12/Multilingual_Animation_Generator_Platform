@@ -49,6 +49,8 @@ function App() {
             title="Idea to Video in Minutes"
             description="Problem Sol Saves You Time & Effort."
           />
+        </div>
+        <div className='highlightsCard'>
           <Card
             icon="mic"
             title="Choose Your Voice"
@@ -65,11 +67,9 @@ function App() {
             description="Preview & Download Your Video in 10 Minutes."
           />
         </div>
-        <div className='cardbox'>
-          <div className='extraText'>
+         <div className='quote'>
             <p>  “ Stop dreaming, Start creating & Turn your imagination into reality ” </p>
           </div>
-        </div>
         <Generate />
       </div>
     </div>
