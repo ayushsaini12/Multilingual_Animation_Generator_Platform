@@ -6,23 +6,41 @@ import { Header } from './components/Header/Header';
 import { Hero } from './components/Hero/Hero';
 import axios from 'axios';
 import { Video } from './components/video/video';
+import { useState } from 'react';
 
 function App() {
 
-  async function generateVideo(story, gender, language, height, width) {
+  const [story, setStory] = useState("");
+  const [lang, setLang] = useState("");
+  const [height, setHeight] = useState("");
+  const [width, setWidth] = useState("");
+  const [speaker, setSpeaker] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  function checkValue() {
+    console.log(story)
+    console.log(lang)
+    console.log(height)
+    console.log(width)
+    console.log(speaker)
+    
+  }
+
+  let videoPath;
+  
+  async function generateVideo(story, language, height, width, speaker) {
     const config = {
       headers: {
         "Content-Type": "application/json",
       },
     }
-    const body = JSON.stringify({story, gender, language, height, width });
+    const body = JSON.stringify({story, language, height, width, speaker });
     try {
       const result = await axios.post("url",body,config )
-      return result;
+      return result.data;
     } catch (error) {
       return error;
     }
-  
   }
 
   return (
@@ -70,7 +88,7 @@ function App() {
          <div className='quote'>
             <p>  “ Stop dreaming, Start creating & Turn your imagination into reality ” </p>
           </div>
-        <Generate />
+        <Generate setStory = {setStory} setLang = {setLang} setHeight = {setHeight} setWidth = {setWidth} setSpeaker = {setSpeaker} setLoading = {setLoading} generateVideo = {generateVideo} />
         <Video />
         <p></p>
         <p></p>
