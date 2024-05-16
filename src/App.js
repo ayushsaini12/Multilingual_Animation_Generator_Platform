@@ -7,6 +7,8 @@ import { Hero } from './components/Hero/Hero';
 import axios from 'axios';
 import { Video } from './components/video/video';
 import { useState } from 'react';
+const cors = require('cors');
+
 
 function App() {
 
@@ -27,19 +29,48 @@ function App() {
   }
 
   let videoPath;
-  
-  async function generateVideo(story, language, height, width, speaker) {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-    const body = JSON.stringify({story, language, height, width, speaker });
+
+
+  const apiUrl = 'https://1ee6-35-196-241-212.ngrok-free.app';
+
+
+  async function getVideoFile() {
     try {
-      const result = await axios.post("url",body,config )
-      return result.data;
+      const response = await axios.get(`${apiUrl}/get_video`, {
+        responseType: 'stream',
+      });
+      const fs = require('fs');
+      const videoPath = 'output.mp4';
+      const writer = fs.createWriteStream(videoPath);
+  
+      response.data.pipe(writer);
+  
+      writer.on('finish', () => {
+        console.log('Video file downloaded successfully');
+      });
+  
+      writer.on('error', (err) => {
+        console.error('Error writing video file:', err);
+      });
     } catch (error) {
-      return error;
+      console.error('Error getting video file:', error.message);
+    }
+  }
+
+  async function generateVideo(story, language, speaker, height, width) {
+    try {
+      console.log({story, language, speaker, height, width})
+      const response = await axios.post(`${apiUrl}/generate_video`, {
+        story,
+        language,
+        speaker,
+        height,
+        width,
+      });
+  
+      console.log(response.data); // "Animation generation started in the background."
+    } catch (error) {
+      console.error('Error generating video:', error.message);
     }
   }
 
@@ -88,7 +119,7 @@ function App() {
          <div className='quote'>
             <p>  “ Stop dreaming, Start creating & Turn your imagination into reality ” </p>
           </div>
-        <Generate setStory = {setStory} setLang = {setLang} setHeight = {setHeight} setWidth = {setWidth} setSpeaker = {setSpeaker} setLoading = {setLoading} generateVideo = {generateVideo} />
+        <Generate data = {{story, lang, height,width,speaker} } setStory = {setStory} setLang = {setLang} setHeight = {setHeight} setWidth = {setWidth} setSpeaker = {setSpeaker} setLoading = {setLoading} generateVideo = {generateVideo} />
         <Video />
         <p></p>
         <p></p>

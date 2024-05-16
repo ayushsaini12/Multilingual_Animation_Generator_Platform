@@ -12,6 +12,7 @@ export function Generate(params) {
   const setSpeaker = params.setSpeaker;
   const setLoading = params.setLoading;
   const generateVideo = params.generateVideo;
+  const data = params.data;
   // console.log(params)
 
   const handleTextareaChange = (e) => {
@@ -44,7 +45,8 @@ export function Generate(params) {
 
   function genVideo(){
     setLoading(true);
-    generateVideo();
+    const data1 =generateVideo(data.story, data.lang, data.speaker,data.height, data.width );
+    console.log(data1);
     setLoading(true);
   }
 
