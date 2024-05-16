@@ -8,11 +8,12 @@
 }
 
 .border{
-    border: 1px solid #1a1a1a;
+    border: 1px solid #504c4c;
   border-radius: 8px;
-  padding: 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 250px;
+  padding: 20px;
+  box-shadow: 0 2px 4px #171717;
+  width: 220px;
+  height: 80px;
   margin: 0 auto;
 }
 

@@ -16,9 +16,11 @@ p{
     font-size: 20px;
 }
 
+
+
 .gradient-text {
     font-size: 60px;
-    background: -webkit-linear-gradient(rgb(120, 98, 206), rgb(154, 23, 100));
+    background: -webkit-linear-gradient(rgb(204, 33, 153), rgb(222, 55, 83));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: shiny-gradient 5s ease infinite;
@@ -28,6 +30,7 @@ p{
     /* Modify animation for horizontal shine */
     0% {
       background-position: 0% 50%;
+      color: blueviolet;
     }
     50% {
       background-position: 100% 50%;
@@ -35,6 +38,7 @@ p{
     }
     100% {
       background-position: 0% 50%;
+      color: coral;
     }
   }
 
