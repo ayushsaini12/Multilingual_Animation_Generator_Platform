@@ -6,6 +6,7 @@ import { Header } from './components/Header/Header';
 import { Hero } from './components/Hero/Hero';
 // import { Video } from './components/video/video';
 import axios from 'axios';
+import { Video } from './components/video/video';
 
 function App() {
 
@@ -71,6 +72,7 @@ function App() {
             <p>  “ Stop dreaming, Start creating & Turn your imagination into reality ” </p>
           </div>
         <Generate />
+        <Video />
       </div>
     </div>
   );
