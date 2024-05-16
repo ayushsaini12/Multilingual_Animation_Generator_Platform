@@ -4,7 +4,6 @@ import { Card } from './components/card/Card';
 import { Generate } from './components/generate/Generate';
 import { Header } from './components/Header/Header';
 import { Hero } from './components/Hero/Hero';
-// import { Video } from './components/video/video';
 import axios from 'axios';
 import { Video } from './components/video/video';
 
@@ -73,6 +72,14 @@ function App() {
           </div>
         <Generate />
         <Video />
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
       </div>
     </div>
   );
