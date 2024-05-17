@@ -13,6 +13,7 @@ export function Generate(params) {
   const setLoading = params.setLoading;
   const generateVideo = params.generateVideo;
   const data = params.data;
+  const getVideoFile =  params.getVideoFile;
   // console.log(params)
 
   const handleTextareaChange = (e) => {
@@ -43,11 +44,20 @@ export function Generate(params) {
     setSpeaker(e.target.value)
   }
 
-  function genVideo(){
-    setLoading(true);
-    const data1 =generateVideo(data.story, data.lang, data.speaker,data.height, data.width );
-    console.log(data1);
-    setLoading(true);
+   async function genVideo(){
+    setLoading("video");
+    // const data1 = await generateVideo(data.story, data.lang, data.speaker,data.height, data.width );
+    // console.log(data1);
+
+    while (true) {
+      const status = await getVideoFile();
+      if (status === 200) {
+        setLoading("done");
+        break;
+      } else {
+        await new Promise(resolve => setTimeout(resolve, 10000));
+      }
+    }
   }
 
   return (
