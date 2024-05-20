@@ -46,8 +46,8 @@ export function Generate(params) {
 
    async function genVideo(){
     setLoading("video");
-    // const data1 = await generateVideo(data.story, data.lang, data.speaker,data.height, data.width );
-    // console.log(data1);
+    const data1 = await generateVideo(data.story, data.lang, data.speaker,data.height, data.width );
+    console.log(data1);
 
     while (true) {
       const status = await getVideoFile();
