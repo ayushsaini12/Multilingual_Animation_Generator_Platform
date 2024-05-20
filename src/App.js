@@ -29,7 +29,7 @@ function App() {
 
   // let videoPath;
 
-  const apiUrl = 'https://436f-34-171-150-214.ngrok-free.app';
+  const apiUrl = 'https://2d89-34-91-2-239.ngrok-free.app';
 
   async function getVideoFile() {
     try {

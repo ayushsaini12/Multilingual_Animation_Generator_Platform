@@ -34,6 +34,7 @@ export function Video (params) {
        <ReactPlayer url={video()}
         controls={showControls}
         playing={true}
+        loop = {true}
         width='100%'
         height='auto'  />
     </div>
