@@ -1,71 +1,95 @@
-# Note
+# Multilingual Story Generator
+
+## Note
 
 Backend for the project cannot be shown due to research restriction and is in process of being published.
 
+## Overview
 
-## Available Scripts
+This project focuses on generating multilingual scripts from stories using the **Gemma LLM** (Large Language Model), fine-tuned on a custom dataset. The project supports **Hindi**, **English**, and **Punjabi**, and automatically generates scripts, scenes, background descriptions, and dialogues, which are then transformed into multimedia content such as videos.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Multilingual Support**: The model is fine-tuned to understand and generate scripts in three languages—Hindi, English, and Punjabi.
+- **Story to Script Conversion**: Given a story, the model generates a script with detailed scene breakdowns, including character actions, background descriptions, and dialogues.
+- **Image and Audio Generation**:
+  - **Images** are generated using **SDXL** based on the scene background descriptions.
+  - **Audio** is generated using **BarkTTS**, providing narration and sound effects for each scene.
+- **Video Creation**: Generated images and audio are combined to produce a final video for each story.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Workflow
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **Prompt and Data Processing**  
+   The story and language inputs are processed by a prompt-making function which converts them into a structured format that can be interpreted by the **LLM** to generate JSON data for both image and audio models.
 
-### `npm test`
+2. **Audio and Image Generation**  
+   The JSON data produced by the **LLM** provides detailed scene information, which is fed into:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   - The **Audio Model** for generating multiple audios per scene, using speaker voices and language preferences.
+   - The **Image Model** for generating multiple images per scene, based on background descriptions.
 
-### `npm run build`
+3. **Narrative Generation and Scripting**  
+   The core of the project involves generating a script with detailed scene breakdowns, dialogues, and background descriptions. These outputs are then used to generate images and audio.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. **Video Merging**  
+   The generated images and audios are merged, and effects and transitions are added to create the final video output.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Process Flow Diagram
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Story Input and Script Generation**
+   ![Script Generation Process](.github/images/promptOutput.png)
 
-### `npm run eject`
+2. **Image and Audio Generation**
+   ![Image and Audio Generation](.github/images/audioVideoModel.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Video Creation**
+   ![Video Creation Process](.github/images/mergeModel.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. **Overall System Architecture**
+   ![Main Model](.github/images/mainModel.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Dataset Structure
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The dataset is structured in JSON format with each entry representing a story and its associated scenes. Below is an example of the dataset structure:
 
-## Learn More
+```json
+[
+  {
+    "story": "The story content",
+    "language": "English",
+    "scenes": [
+      {
+        "scene_number": 1,
+        "character": {
+          "active": ["Character1", "Character2"],
+          "inactive": ["Character3"]
+        },
+        "background_information": "Prompt for image generation for this scene",
+        "video_generation_info": {
+          "background": "Background description for video",
+          "objects": ["Object1", "Object2"],
+          "action": "Description of actions happening"
+        },
+        "audio": {
+          "narration": "Narration for the scene in English",
+          "sound_effects": ["SoundEffect1", "SoundEffect2"],
+          "sentiment_analysis": "Emotion conveyed in the narration"
+        }
+      }
+    ]
+  }
+]
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Sample Outputs
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Here are two sample video outputs generated by the system:
 
-### Code Splitting
+1. [Multilingual Video 1](.github/videos/multilingual_video1.mp4)
+2. [Multilingual Video 2](.github/videos/multilingual_video2.mp4)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Future Improvements
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Add more language support**: Extend the model to support additional languages such as Spanish and French.
+- **Implement character voice differentiation**: Introduce different voices for individual characters to create a more immersive and personalized audio experience.
+- **Enhance video post-processing**: Improve the final video with more effects, transitions, and visual enhancements for a more polished output.
